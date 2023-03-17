@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+
+<head profile="http://www.w3.org/2005/10/profile">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/fundraising.css">
+    <link rel="stylesheet" href="/static/thermometer.css">
+
+
+    <title>Donate to Kristina Bangma</title>
+
+
+</head>
+<style>
+    body * {
+        font-family: 'Nunito', sans-serif;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #FFF;
+    }
+
+    #countdown-wrap {
+        width: 100%;
+        height: 80px;
+        /* border: 1px solid black; */
+        padding: 20px;
+        font-family: arial;
+        max-width: 650px;
+        margin: 10px auto 50px;
+    }
+
+    #goal {
+        font-size: 24px;
+        float: right;
+        color: #080808;
+
+        @media only screen and (max-width : 640px) {
+            text-align: center;
+        }
+
+    }
+
+    #raised {
+        width: 35%;
+        font-size: 24px;
+        float: left;
+        color: #080808;
+
+        @media only screen and (max-width : 640px) {
+            text-align: center;
+        }
+
+    }
+
+    #glass {
+        width: 100%;
+        height: 20px;
+        background: #A6A6A6;
+        border-radius: 10px;
+        float: left;
+        overflow: hidden;
+    }
+
+    #progress {
+        float: left;
+        width: 20%;
+        height: 20px;
+        background: #D1481D;
+        z-index: 333;
+        /* border-radius: 5px; */
+    }
+
+    .goal-stat {
+        width: 25%;
+        /* height: 30px; */
+        padding: 10px;
+        float: left;
+        margin: 0;
+        color: #080808;
+
+        @media only screen and (max-width : 640px) {
+            width: 50%;
+            text-align: center;
+        }
+    }
+
+    .goal-number,
+    .goal-label {
+        display: block;
+    }
+
+    .goal-number {
+        font-weight: bold;
+    }
+</style>
+
+<body>
+
+    <!-- Image and text -->
+
+
+
+    <div class="container">
+
+
+
+
+        <br />
+        <h3>Donate to Kristina Bangma's fundraising</h3>
+        <br />
+        <form method="post">
+            <input type="hidden" name="csrfmiddlewaretoken"
+                value="eYteZbLR4vVNrpcTH4qNMrkDHdaR7mIqRau5S98vAiTV8Wn8X0PWqDP8oeY38y5U">
+
+
+
+
+            <div id="div_id_amount" class="form-group">
+                <label for="id_amount" class="col-form-label  requiredField">
+                    Amount<span class="asteriskField">*</span>
+                </label>
+                <div>
+                    <input type="radio" class="radio" id="id_amount" name="amount" value="10">
+                    <label for="10">$10</label>
+                </div>
+                <div>
+                    <input type="radio" class="radio" id="id_amount" name="amount" value="25">
+                    <label for="25">$25</label>
+                </div>
+                <div>
+                    <input type="radio" class="radio" id="id_amount" name="amount" value="50">
+                    <label for="50">$50</label>
+                </div>
+                <div>
+                    <input type="radio" class="radio" id="id_amount" name="amount" value="100">
+                    <label for="100">$100</label>
+                </div>
+                <div>
+                    <input type="radio" class="radio" id="other" name="amount" value="other">
+                    <label for="other" class="col-form-label">Other:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">$</span>
+                        </div>
+                        <input type="number" min="0" step="0.01" class="form-control" id="other" name="other_amount"
+                            size="10" onclick="document.getElementById('other').checked = true;">
+                    </div>
+                </div>
+                <div>
+                    Donation are allocated to our charities where
+                    funds are of immediate priority
+                </div>
+            </div>
+
+            <div>
+
+
+
+
+                <div id="div_id_name" class="form-group">
+
+                    <label for="id_name" class="col-form-label  requiredField">
+                        Name<span class="asteriskField">*</span>
+                    </label>
+
+
+
+
+
+
+
+
+                    <div class="">
+                        <input type="text" name="name" class="textinput textInput form-control" required id="id_name">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div class="form-group">
+                <div id="div_id_anonymous" class="form-check">
+                    <label for="id_anonymous" class="form-check-label">
+                        <input type="checkbox" name="anonymous" class="checkboxinput form-check-input"
+                            id="id_anonymous">
+                        Anonymous (your name will not appear on the site)
+                    </label>
+                </div>
+            </div>
+            <div>
+
+
+
+
+                <div id="div_id_email" class="form-group">
+
+                    <label for="id_email" class="col-form-label  requiredField">
+                        Email<span class="asteriskField">*</span>
+                    </label>
+
+
+
+
+
+
+
+
+                    <div class="">
+                        <input type="email" name="email" class="emailinput form-control" required id="id_email">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div>
+                <div id="div_id_message" class="form-group">
+                    <label for="id_message" class="col-form-label ">
+                        Message (This will appear along with your donation)
+                    </label>
+                    <div class="">
+                        <textarea name="message" cols="40" rows="3" class="textarea form-control"
+                            id="id_message"></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>Please fill in the following information to receive a tax receipt for donations over $20:</div>
+            <br>
+            <div>
+
+
+
+
+                <div id="div_id_tax_name" class="form-group">
+
+                    <label for="id_tax_name" class="col-form-label ">
+                        Full Name
+                    </label>
+
+
+
+
+
+
+
+
+                    <div class="">
+                        <input type="text" name="tax_name" class="textinput textInput form-control" id="id_tax_name">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div>
+
+
+
+
+                <div id="div_id_address" class="form-group">
+
+                    <label for="id_address" class="col-form-label ">
+                        Address
+                    </label>
+
+
+
+
+
+
+
+
+                    <div class="">
+                        <input type="text" name="address" maxlength="100" class="textinput textInput form-control"
+                            id="id_address">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div>
+
+
+
+
+                <div id="div_id_city" class="form-group">
+
+                    <label for="id_city" class="col-form-label ">
+                        City
+                    </label>
+
+
+
+
+
+
+
+
+                    <div class="">
+                        <input type="text" name="city" maxlength="50" class="textinput textInput form-control"
+                            id="id_city">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div>
+
+
+
+
+                <div id="div_id_province" class="form-group">
+
+                    <label for="id_province" class="col-form-label ">
+                        Province
+                    </label>
+
+
+
+
+
+
+
+
+                    <div class="">
+                        <input type="text" name="province" maxlength="50" class="textinput textInput form-control"
+                            id="id_province">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div>
+
+
+
+
+                <div id="div_id_country" class="form-group">
+
+                    <label for="id_country" class="col-form-label ">
+                        Country
+                    </label>
+
+
+
+
+
+
+
+
+                    <div class="">
+                        <input type="text" name="country" maxlength="25" class="textinput textInput form-control"
+                            id="id_country">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div>
+
+
+
+
+                <div id="div_id_postal_code" class="form-group">
+
+                    <label for="id_postal_code" class="col-form-label ">
+                        Postal code
+                    </label>
+
+
+
+
+
+
+
+
+                    <div class="">
+                        <input type="text" name="postal_code" maxlength="10" class="textinput textInput form-control"
+                            id="id_postal_code">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            </br>
+            <div>
+                <input type="submit" class="btn btn-primary" value="Donate now">
+            </div>
+        </form>
+
+
+    </div>
+    <br />
+    <br />
+
+
+
+</body>
+
+</html>
